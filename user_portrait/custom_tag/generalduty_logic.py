@@ -51,8 +51,3 @@ if __name__ == '__main__':
         log = Logger('%s.log' % tag_name, level='info')
         log.logger.error("\n" + traceback.format_exc())
 
-
-# 注意:
-# 表不能乱删！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-# 部署之初即初始化画像表，初始与用户维一样
-# 其他集群部署时需注意所返回的信息是否与脚本中一样

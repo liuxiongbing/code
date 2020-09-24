@@ -22,10 +22,3 @@ if __name__ == '__main__':
         log = Logger('%s.log' % param['groupName'], level='info')
         log.logger.error("\n" + traceback.format_exc())
 
-# 注意:
-# 一个脚本一张表
-# 所有历史数据
-# 用户的所有信息
-# 用户在06点后手动刷新时，会产生今日数据，否则每天只能看到昨日数据
-
-
