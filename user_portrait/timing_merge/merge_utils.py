@@ -186,9 +186,8 @@ class MergeLogic:
 
     @staticmethod
     def the_email(content, my_user):
-        my_sender = 'liuxiongbing2020@163.com'
-        my_pass = 'KPAKVVEFEOGVICGE'
-        # my_user = 'liuxiongbing@sanniuben.com'
+        my_sender = 'send_email'
+        my_pass = '替代密码'
 
         try:
             msg = MIMEText(content, 'plain', 'utf-8')
@@ -205,8 +204,5 @@ class MergeLogic:
 
     @staticmethod
     def send_email(content):
-        pass
-        # MergeLogic.the_email(content, 'liuxiongbing@sanniuben.com')
-        # MergeLogic.the_email(content, 'zhongsheng@sanniuben.com')
-        # MergeLogic.the_email(content, 'myp@sanniuben.com')
+        MergeLogic.the_email(content, 'receive_email')
 
