@@ -127,7 +127,7 @@ def caihongpi():
     data = json.loads(data)
     data = data["newslist"][0]["content"]
     if("XXX" in data):
-        data.replace("XXX", "蒋蒋")
+        data.replace("XXX", "花花")
     return data
 
 
@@ -334,7 +334,7 @@ if __name__ == "__main__":
     # 获取accessToken
     accessToken = get_access_token()
     # 接收的用户
-    users = ["olFD56QC4nnCohgj-27OugQ-Y0CE"]
+    users = ["olFD56QC4nnCohgj-27OugQ-Y0CE","olFD56TW2uN20cPag4DUnChiwkgQ"]
     # 传入省份和市获取天气信息
     province, city = "广东", "深圳"
     weather, max_temperature, min_temperature = get_weather(province, city)
