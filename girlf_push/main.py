@@ -19,9 +19,9 @@ def get_color():
 
 def get_access_token():
     # appId
-    app_id = config["app_id"]
+    app_id = "wx3d267c9b1077e434"
     # appSecret
-    app_secret = config["app_secret"]
+    app_secret = "4e90a14e064f6087017ff3a2ca37c4e5"
     post_url = ("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={}&secret={}"
                 .format(app_id, app_secret))
     try:
@@ -188,7 +188,7 @@ def tip():
 
 
 # 推送信息
-def send_message(to_user, access_token, city_name, weather, max_temperature, min_temperature, pipi, lizhi, wind, windspeed, sunrise, sunset, tips, note_en, note_ch, health_tip, lucky_):
+def send_message(to_user, access_token, city_name, weather, max_temperature, min_temperature, pipi, lizhi, wind, windspeed, sunrise, sunset, tips, note_en=None, note_ch=None, health_tip=None, lucky_=None):
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
     year = localtime().tm_year
@@ -197,20 +197,20 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
     today = datetime.date(datetime(year=year, month=month, day=day))
     week = week_list[today.isoweekday() % 7]
     # 获取在一起的日子的日期格式
-    love_year = int(config["love_date"].split("-")[0])
-    love_month = int(config["love_date"].split("-")[1])
-    love_day = int(config["love_date"].split("-")[2])
+    love_year = int("2022-12-05".split("-")[0])
+    love_month = int("2022-12-05".split("-")[1])
+    love_day = int("2022-12-05".split("-")[2])
     love_date = date(love_year, love_month, love_day)
     # 获取在一起的日期差
     love_days = str(today.__sub__(love_date)).split(" ")[0]
     # 获取所有生日数据
-    birthdays = {}
-    for k, v in config.items():
-        if k[0:5] == "birth":
-            birthdays[k] = v
+    birthdays = {"birthday1": "r1996-09-10"}
+    # for k, v in config.items():
+    #     if k[0:5] == "birth":
+    #         birthdays[k] = v
     data = {
         "touser": to_user,
-        "template_id": config["template_id"],
+        "template_id": "clTz8su7MqHvManKkr_CZKlO01foynt_YLVg5x2gwR8",
         "url": "http://weixin.qq.com/download",
         "topcolor": "#FF0000",
         "data": {
@@ -317,55 +317,55 @@ def send_message(to_user, access_token, city_name, weather, max_temperature, min
 
 
 if __name__ == "__main__":
-    try:
-        with open("config.txt", encoding="utf-8") as f:
-            config = eval(f.read())
-    except FileNotFoundError:
-        print("推送消息失败，请检查config.txt文件是否与程序位于同一路径")
-        print(os.listdir("./"))
-        os.system("pause")
-        sys.exit(1)
-    except SyntaxError:
-        print("推送消息失败，请检查配置文件格式是否正确")
-        os.system("pause")
-        sys.exit(1)
+    # try:
+    #     with open("config.txt", encoding="utf-8") as f:
+    #     with open("./girlf_push/config.txt", encoding="utf-8") as f:
+    #         config = eval(f.read())
+    # except FileNotFoundError:
+    #     print("推送消息失败，请检查config.txt文件是否与程序位于同一路径")
+    #     os.system("pause")
+    #     sys.exit(1)
+    # except SyntaxError:
+    #     print("推送消息失败，请检查配置文件格式是否正确")
+    #     os.system("pause")
+    #     sys.exit(1)
 
     # 获取accessToken
     accessToken = get_access_token()
     # 接收的用户
-    users = config["user"]
+    users = ["olFD56QC4nnCohgj-27OugQ-Y0CE"]
     # 传入省份和市获取天气信息
-    province, city = config["province"], config["city"]
+    province, city = "广东", "深圳"
     weather, max_temperature, min_temperature = get_weather(province, city)
     # 获取彩虹屁API
-    caihongpi_API = config["caihongpi_API"]
+    caihongpi_API = "46e3b6b1bd2d44a1bb1c6cdb49d28cdf"
     # 获取励志古言API
-    lizhi_API = config["lizhi_API"]
+    lizhi_API = "46e3b6b1bd2d44a1bb1c6cdb49d28cdf"
     # 获取天气预报API
-    tianqi_API = config["tianqi_API"]
+    tianqi_API = "46e3b6b1bd2d44a1bb1c6cdb49d28cdf"
     # 是否启用词霸每日金句
-    Whether_Eng = config["Whether_Eng"]
+    Whether_Eng = "是"
     # 获取健康小提示API
-    health_API = config["health_API"]
+    health_API = ""
     # 获取星座运势API
-    lucky_API = config["lucky_API"]
+    lucky_API = ""
     # 获取星座
-    astro = config["astro"]
+    astro = ""
     # 获取词霸每日金句
-    note_ch, note_en = get_ciba()
+    # note_ch, note_en = get_ciba()
     # 彩虹屁
     pipi = caihongpi()
     # 健康小提示
-    health_tip = health()
+    # health_tip = health()
     # 下雨概率和建议
     wind, windspeed, sunrise, sunset, tips = tip()
     # 励志名言
     lizhi = lizhi()
     # 星座运势
-    lucky_ = lucky()
+    # lucky_ = lucky()
     # 公众号推送消息
     for user in users:
-        send_message(user, accessToken, city, weather, max_temperature, min_temperature, pipi, lizhi, wind, windspeed, sunrise, sunset, tips, note_en, note_ch, health_tip, lucky_)
+        send_message(user, accessToken, city, weather, max_temperature, min_temperature, pipi, lizhi, wind, windspeed, sunrise, sunset, tips)
     import time
     time_duration = 3.5
     time.sleep(time_duration)
