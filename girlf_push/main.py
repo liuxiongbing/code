@@ -123,7 +123,7 @@ def caihongpi():
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     conn.request('POST', '/caihongpi/index', params, headers)
     res = conn.getresponse()
-    data = res.read().replace(u'\xbb', '')
+    data = str(res.read()).replace(u'\xbb', '')
     data = json.loads(data)
     data = data["newslist"][0]["content"]
     if("XXX" in data):
@@ -138,7 +138,7 @@ def health():
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     conn.request('POST', '/healthtip/index', params, headers)
     res = conn.getresponse()
-    data = res.read().replace(u'\xbb', '')
+    data = str(res.read()).replace(u'\xbb', '')
     data = json.loads(data)
     data = data["newslist"][0]["content"]
     return data
@@ -151,7 +151,7 @@ def lucky():
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     conn.request('POST', '/star/index', params, headers)
     res = conn.getresponse()
-    data = res.read().replace(u'\xbb', '')
+    data = str(res.read()).replace(u'\xbb', '')
     data = json.loads(data)
     data = "爱情指数："+str(data["newslist"][1]["content"])+"\n速配星座："+str(data["newslist"][7]["content"])+"\n工作指数："+str(data["newslist"][2]["content"])+"\n今日概述："+str(data["newslist"][8]["content"])
     return data
@@ -164,7 +164,7 @@ def lizhi():
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     conn.request('POST', '/lzmy/index', params, headers)
     res = conn.getresponse()
-    data = res.read().replace(u'\xbb', '')
+    data = str(res.read()).replace(u'\xbb', '')
     data = json.loads(data)
     return data["newslist"][0]["saying"]
 
@@ -176,7 +176,7 @@ def tip():
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
     conn.request('POST', '/tianqi/index', params, headers)
     res = conn.getresponse()
-    data = res.read().replace(u'\xbb', '')
+    data = str(res.read()).replace(u'\xbb', '')
     data = json.loads(data)
     print(data)
     wind = data["newslist"][0]["wind"]
