@@ -70,7 +70,7 @@ def get_birthday(birthday, year, today):
 def get_weather(province, city):
     # 城市id
     try:
-        city_id = cityinfo.cityInfo[province][city]["AREAID"]
+        city_id = "101280601"
     except KeyError:
         print("推送消息失败，请检查省份或城市是否正确")
         os.system("pause")
