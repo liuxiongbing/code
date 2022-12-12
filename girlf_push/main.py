@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:gbk -*-
 import random
 from time import time, localtime
 import cityinfo
@@ -86,7 +86,7 @@ def get_weather(province, city):
     }
     url = "http://d1.weather.com.cn/dingzhi/{}.html?_={}".format(city_id, t)
     response = get(url, headers=headers)
-    # response.encoding = "utf-8"
+    response.encoding = "utf-8"
     response_data = response.text.split(";")[0].split("=")[-1]
     response_json = eval(response_data)
     # print(response_json)
