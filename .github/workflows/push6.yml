@@ -1,4 +1,4 @@
-name: 'push3'
+name: 'push6'
 on:
   schedule:
     - cron: '* * * * *'
