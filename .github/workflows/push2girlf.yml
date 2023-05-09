@@ -21,4 +21,4 @@ jobs:
         pip install zhdate==0.1
     - name: '发送消息'
       run: |
-        python ./girlf_push/main.py
+        # python ./girlf_push/main.py
